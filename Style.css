@@ -1,3 +1,4 @@
+/* ========== GLOBAL RESET ========== */
 * {
     padding: 0;
     margin: 0;
@@ -8,6 +9,8 @@
     scroll-behavior: smooth;
     scroll-padding-top: 2rem;
 }
+
+/* ========== ROOT VARIABLES ========== */
 :root {
     --main-color: #ffffff;
     --second-main: #eeeeee;
@@ -17,6 +20,8 @@
     --p-font: 1rem;
     --bg-color: #5b5555;
 }
+
+/* ========== BODY ========== */
 body {
     background-color: #404040;
     background-image: url("data:image/svg+xml,...");
@@ -24,6 +29,8 @@ body {
     background-size: cover;
     color: var(--text-color);
 }
+
+/* ========== HEADER ========== */
 header {
     position: fixed;
     width: 100%;
@@ -39,18 +46,23 @@ header {
     background-size: cover;
     padding: 24px 14%;
     transition: .3s;
+    height: 70px; /* explicit height */
 }
+
 .logo {
     color: #ffffff;
     font-size: 1.8rem;
     font-weight: 600;
 }
+
 span {
     color: #79fff4;
 }
+
 .navbar {
     display: flex;
 }
+
 .navbar a {
     color: #ffffff;
     font-size: 1rem;
@@ -59,46 +71,82 @@ span {
     margin: 0 5px;
     transition: all .45s ease;
 }
+
 .navbar a:hover {
     background: #9f096d;
     transition: .3s;
+    border-radius: 20px;
 }
+
 #menu-icon {
     font-size: 28px;
     cursor: pointer;
     display: none;
     color: white;
 }
-section {
-    padding: 25px 14%;
-}
-.home {
-    position: relative;
-    height: 100vh;
+
+/* Mobile menu toggle */
+.show-navbar {
+    display: flex !important;
+    flex-direction: column;
     width: 100%;
+    background-color: #404040;
+    position: absolute;
+    top: 70px; /* below header */
+    right: 0;
+    z-index: 999;
+}
+
+/* ========== SECTIONS ========== */
+section {
+    padding: 120px 14% 25px 14%; /* top padding = header height + extra space */
+}
+
+/* ========== HOME SECTION ========== */
+.home {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 6rem;
+    grid-gap: 3rem;
     align-items: center;
+    min-height: 80vh;
 }
+
 .home-img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
     border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
 }
+
+/* Home text container */
+.home-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertical center */
+    align-items: flex-start; /* desktop left-aligned */
+}
+
 .home-text h5 {
     font-size: 24px;
     font-weight: 400;
     margin-bottom: 8px;
 }
+
 .home-text h1 {
     font-size: var(--big-font);
-    font-weight: 3000;
-    margin-bottom: 5px;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
+
 .home-text h6 {
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 8px;
 }
+
 .home-text p {
     max-width: 400px;
     font-size: var(--p-font);
@@ -107,6 +155,8 @@ section {
     margin-bottom: 1.5rem;
     color: var(--second-main);
 }
+
+/* Buttons */
 .btn {
     background: #9f096d;
     color: white;
@@ -120,25 +170,31 @@ section {
     letter-spacing: 2px;
     transition: ease all 0.35s;
 }
+
 .btn:hover {
     background: var(--main-color);
     color: #000000;
 }
+
+/* ========== ABOUT SECTION ========== */
 .about {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 5rem;
+    grid-gap: 3rem;
     align-items: center;
     padding: 60px 14%;
 }
 
 .about-img img {
-    max-width: 75%;
     width: 100%;
+    max-width: 400px;
     height: auto;
     border-radius: 20px;
     object-fit: cover;
+    display: block;
+    margin: 0 auto;
 }
+
 .about-text h3 {
     font-size: 30px;
     font-weight: 300;
@@ -171,17 +227,34 @@ section {
     margin-right: 20px;
 }
 
-.main-btn .btn {
-    margin-right: 20px;
-}
-.center {
+/* ========== ABC SECTION (CENTERED) ========== */
+.abc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    background: #0f0f1a90;
+    width: 100%;
+    padding: 100px 5%;
+    margin: 100px auto 0 auto;
+    box-sizing: border-box;
 }
-.center h3 {
-    font-size: 30px;
+
+.abc h4 {
+    font-size: 1.6rem;
     font-weight: 300;
-    letter-spacing: 6px;
+    margin-bottom: 30px;
 }
+
+.abc h3 {
+    color: #79fff4;
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+/* ========== SERVICES / RESUME / CONTACT ========== */
 .services-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, auto));
@@ -189,39 +262,25 @@ section {
     align-items: center;
     margin-top: 4.4rem;
 }
-.row {
+
+.row, .box {
     background: #0f0f1a90;
     padding: 60px 35px;
     border-radius: 20px;
     cursor: pointer;
     transition: all .30s;
 }
-.row h3 {
+
+.row h3, .box h6 {
     font-size: 1.25rem;
     margin-bottom: 10px;
 }
-.row:hover {
+
+.row:hover, .box:hover {
     transform: translateY(-15px);
     box-shadow: 0px 15px 30px rgba(100, 213, 228, 0.7);
 }
-.abc {
-    text-align: center;
-    background: #0f0f1a90;
-    width: 100%;
-    padding: 150px 0;
-    margin: 100px auto;
-}
-.abc h4 {
-    font-size: 1.6rem;
-    font-weight: 300;
-    margin-bottom: 30px;
-}
-.abc h3 {
-    color: #79fff4;
-    font-size: 4rem;
-    font-weight: 300;
-    margin-bottom: 40px;
-}
+
 .resume-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, auto));
@@ -229,31 +288,19 @@ section {
     align-items: center;
     margin-top: 4.4rem;
 }
-.box {
-    background: #0f0f1a90;
-    padding: 40px 30px;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all .40s;
-}
-.box h6 {
-    font-size: 1.25rem;
-    margin-bottom: 10px;
-}
-.box:hover {
-    transform: translateY(-15px);
-    box-shadow: 0px 15px 30px rgba(100, 213, 228, 0.7);
-}
+
 .contact-form {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 4.2rem;
 }
+
 .contact-form form {
     position: relative;
     width: 500px;
 }
+
 form input,
 form textarea {
     width: 100%;
@@ -265,14 +312,17 @@ form textarea {
     border: none;
     outline: none;
 }
+
 form input::placeholder,
 form textarea::placeholder {
     color: var(--second-main);
 }
+
 textarea {
     resize: none;
     height: 200px;
 }
+
 form .send-btn {
     background: #9f096d;
     color: white;
@@ -284,38 +334,84 @@ form .send-btn {
     transition: ease all 0.35s;
     cursor: pointer;
 }
+
 form .send-btn:hover {
     background: #000000;
     color: var(--main-color);
 }
-.last-text{
+
+.last-text {
     text-align: center;
 }
-/* Tablet and medium devices */
+
+/* ========== CENTERED SECTIONS ========== */
+.center {
+    text-align: center;
+}
+
+.center h3 {
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 6px;
+}
+
+/* ========== MEDIA QUERIES ========== */
 @media screen and (max-width: 768px) {
-    .home, .about, .services-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .navbar a {
-        font-size: 0.9rem;
-    }
-
     header {
         padding: 10px 5%;
     }
 
-    .contact-form form {
+    .navbar {
+        display: none;
+        flex-direction: column;
         width: 100%;
+        background-color: #404040;
+        position: absolute;
+        top: 70px;
+        right: 0;
     }
 
-    .about {
-        grid-gap: 4rem;
+    #menu-icon {
+        display: block;
+    }
+
+    .home, .about, .services-content, .resume-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        grid-gap: 2rem;
+    }
+
+    .home-img, .about-img img {
+        max-width: 90%;
+    }
+
+    .abc {
+        padding: 80px 5%;
+    }
+
+    .abc h3 {
+        font-size: 2.5rem;
+    }
+
+    .abc h4 {
+        font-size: 1.4rem;
+    }
+
+    section {
+        padding-top: 90px; /* header offset on tablet */
+    }
+
+    /* Center home text on smaller screens */
+    .home-text {
+        align-items: center;
+        text-align: center;
+    }
+
+    .home-text p {
+        max-width: 100%;
     }
 }
 
-/* Extra small devices (phones) */
 @media screen and (max-width: 500px) {
     :root {
         --big-font: 2rem;
@@ -327,55 +423,16 @@ form .send-btn:hover {
         font-size: 1.4rem;
     }
 
-    .navbar {
-        flex-direction: column;
-        background-color: #404040;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        display: none;
-    }
-
-    .navbar a {
-        padding: 12px 0;
-        margin: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    header {
+        padding: 8px 5%;
     }
 
     #menu-icon {
-        display: block;
-    }
-
-    .show-navbar {
-        display: flex;
-    }
-
-    .home {
-        grid-gap: 2rem;
-        padding: 40px 5%;
+        font-size: 24px;
     }
 
     .home-text h1 {
         font-size: 2rem;
-    }
-
-    .about-img img {
-        width: 100%;
-    }
-
-    .services-content,
-    .resume-content {
-        grid-gap: 1.5rem;
-        padding: 0 5%;
-    }
-
-    .abc {
-        padding: 80px 5%;
-    }
-
-    .abc h3 {
-        font-size: 2.5rem;
     }
 
     form input,
@@ -388,22 +445,8 @@ form .send-btn:hover {
         padding: 0 20px;
         font-size: 0.9rem;
     }
-}
-@media screen and (max-width: 768px) {
-    .home, .about, .services-content {
-        grid-template-columns: 1fr; /* Stack items vertically */
-        text-align: center; /* Center-align content */
-    }
 
-    .navbar a {
-        font-size: 0.9rem; /* Adjust link size */
-    }
-
-    header {
-        padding: 10px 5%;
-    }
-
-    .contact-form form {
-        width: 100%; /* Ensure form fits smaller screens */
+    section {
+        padding-top: 70px; /* header offset on mobile */
     }
 }
